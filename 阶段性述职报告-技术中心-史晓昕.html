@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>阶段性述职报告｜进化·新生</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --brand:#ff9b2f;
+      --bg-start:#fffaf2;
+      --bg-end:#ffffff;
+      --text:#1f1f1f;
+      --muted:#6e6e73;
+      --glass:rgba(255,255,255,.56);
+      --glass-border:rgba(255,255,255,.78);
+      --glass-highlight:rgba(255,180,90,.2);
+      --radius:20px;
+      --card-shadow:0 12px 38px rgba(255, 153, 47, 0.09), 0 2px 10px rgba(255, 153, 47, 0.08);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;
+      font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;
+      background:linear-gradient(160deg,var(--bg-start),var(--bg-end));
+      color:var(--text);
+      overflow:hidden;
+    }
+    .mono{font-family:"JetBrains Mono",monospace}
+
+    .bg-orb{
+      position:fixed;
+      inset:auto;
+      width:48vw;
+      height:48vw;
+      max-width:760px;
+      max-height:760px;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, rgba(255,180,105,.28), rgba(255,180,105,0));
+      filter:blur(28px);
+      pointer-events:none;
+      z-index:0;
+      animation:drift 15s ease-in-out infinite alternate;
+    }
+    .orb1{top:-18vw;left:-14vw}
+    .orb2{right:-18vw;bottom:-16vw;animation-delay:-7s}
+    @keyframes drift{
+      0%{transform:translate3d(0,0,0) scale(1)}
+      100%{transform:translate3d(20px,-16px,0) scale(1.08)}
+    }
+
+    .progress-wrap{
+      position:fixed;top:0;left:0;width:100%;height:4px;background:rgba(255,255,255,.35);z-index:20
+    }
+    .progress{
+      height:100%;
+      width:0;
+      background:linear-gradient(90deg,rgba(255,173,95,.72),var(--brand));
+      transition:width .5s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .deck{
+      position:relative;z-index:2;height:100vh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth;
+    }
+    .slide{
+      height:100vh;
+      min-height:740px;
+      padding:9vh 8vw 11vh;
+      scroll-snap-align:start;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:28px;
+    }
+    .parallax-layer{
+      display:flex;
+      flex-direction:column;
+      gap:28px;
+      transform:translate3d(0,42px,0) scale(.94);
+      opacity:0;
+      filter:blur(2px);
+      transform-origin:center center;
+      transition:transform .85s cubic-bezier(.16,1,.3,1),opacity .72s ease,filter .72s ease;
+      will-change:transform,opacity;
+    }
+    .slide.in-view .parallax-layer{
+      transform:translate3d(0,0,0) scale(1);
+      opacity:1;
+      filter:blur(0);
+    }
+
+    .glass{
+      background:var(--glass);
+      border:1px solid var(--glass-border);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 0 0 1px rgba(255,255,255,.2), var(--card-shadow);
+      backdrop-filter:blur(20px) saturate(130%);
+      -webkit-backdrop-filter:blur(20px) saturate(130%);
+      border-radius:var(--radius);
+    }
+
+    .title{
+      font-size:clamp(2.1rem,4.4vw,3.9rem);
+      font-weight:800;
+      line-height:1.22;
+      letter-spacing:-.02em;
+      max-width:18ch;
+    }
+    .subtitle{
+      font-size:clamp(1rem,1.6vw,1.22rem);
+      color:var(--muted);
+      line-height:1.9;
+      max-width:62ch;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,183,118,.55);
+      background:rgba(255,255,255,.58);
+      color:#a55d0f;
+      font-weight:700;
+      width:max-content;
+      transition:box-shadow .35s ease,transform .35s ease;
+    }
+    .badge:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 26px rgba(255, 162, 66, 0.18);
+    }
+    .badge i{width:16px;height:16px}
+
+    .grid-2{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{padding:22px}
+    .card h3{font-size:1.08rem;color:#8f4f0f;margin-bottom:12px}
+    .card p,.card li{color:#38383a;line-height:1.86}
+    .muted{color:#6d6d6d}
+    ul{padding-left:20px}
+    li+li{margin-top:8px}
+    .section-lead{
+      border:1px solid rgba(255,183,118,.3);
+      background:linear-gradient(120deg,rgba(255,179,108,.08),rgba(255,255,255,.45));
+      border-radius:14px;
+      padding:14px 16px;
+    }
+    .section-lead p{margin:0;color:#6f4c20;line-height:1.85}
+    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .tag{
+      display:inline-flex;align-items:center;
+      padding:7px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,182,116,.45);
+      background:rgba(255,255,255,.62);
+      color:#8f4f0f;
+      font-size:.85rem;
+      font-weight:600;
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+    .tag:hover{
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(255, 163, 68, 0.15);
+    }
+
+    .kpi{
+      text-align:center;padding:20px 14px
+    }
+    .kpi .num{
+      font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;color:var(--brand);line-height:1.1
+    }
+    .kpi .lab{margin-top:10px;color:#6e6e73;font-size:.95rem;line-height:1.55}
+
+    .side-nav{
+      position:fixed;right:18px;top:50%;transform:translateY(-50%);
+      display:flex;flex-direction:column;gap:10px;z-index:30
+    }
+    .nav-btn{
+      width:46px;height:46px;border:1px solid rgba(255,183,118,.42);border-radius:12px;cursor:pointer;
+      background:rgba(255,255,255,.62);backdrop-filter:blur(14px);
+      box-shadow:0 6px 20px rgba(255, 153, 47, 0.12);font-size:18px;color:#7a4b0f;
+      transition:transform .24s ease, box-shadow .24s ease, background .24s ease;
+    }
+    .nav-btn i{width:18px;height:18px}
+    .nav-btn:hover{
+      transform:translateY(-2px) scale(1.02);
+      background:rgba(255,255,255,.82);
+      box-shadow:0 12px 30px rgba(255, 153, 47, 0.22);
+    }
+    .nav-btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+
+    .footer-indicator{
+      position:fixed;left:20px;bottom:16px;z-index:25;
+      font-size:.92rem;color:#6e6e73;background:rgba(255,255,255,.66);
+      border:1px solid rgba(255,255,255,.84);
+      border-radius:12px;padding:8px 12px;backdrop-filter:blur(10px)
+    }
+
+    /* 架构对比模块 */
+    .arch-compare,
+    .arch-comparison{
+      display:flex;
+      align-items:stretch;
+      justify-content:space-between;
+      gap:44px;
+      margin:24px 0 20px;
+    }
+    .arch-view,
+    .arch-box{
+      position:relative;
+      min-height:290px;
+      padding:30px;
+      overflow:hidden;
+      flex:0 1 45%;
+      max-width:45%;
+    }
+    .arch-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .arch-title{font-size:1rem;font-weight:800;color:#6f3f09}
+    .arch-switch{
+      display:inline-flex;
+      gap:6px;
+      background:rgba(255,255,255,.58);
+      border:1px solid rgba(255,183,118,.42);
+      border-radius:12px;
+      padding:4px;
+    }
+    .switch-btn{
+      border:0;
+      border-radius:10px;
+      padding:6px 10px;
+      background:transparent;
+      color:#8d5a21;
+      font-size:.82rem;
+      cursor:pointer;
+      transition:all .24s ease;
+    }
+    .switch-btn.is-active{
+      background:rgba(255,177,108,.18);
+      color:#7a420a;
+      box-shadow:0 6px 14px rgba(255,153,47,.15);
+    }
+    .arch-scene{
+      position:absolute;
+      inset:64px 16px 16px;
+      border:1px solid rgba(255,255,255,.82);
+      border-radius:14px;
+      background:rgba(255,255,255,.7);
+      transition:opacity .45s ease, transform .5s cubic-bezier(.22,.61,.36,1), filter .45s ease;
+    }
+    .arch-scene.hidden{
+      opacity:0;
+      transform:translateY(12px) scale(.97);
+      filter:blur(1.5px);
+      pointer-events:none;
+    }
+    .arch-scene.visible{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      filter:blur(0);
+    }
+    .chip-row{
+      position:absolute;
+      left:14px;
+      right:14px;
+      top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .pill{
+      display:inline-block;padding:6px 11px;border-radius:10px;
+      font-size:.78rem;border:1px solid transparent;
+    }
+    .pill.before{background:rgba(255,234,230,.84);color:#9c3e2b;border-color:rgba(230,145,122,.3)}
+    .pill.after{background:rgba(231,255,237,.88);color:#2f8d56;border-color:rgba(97,196,135,.3)}
+    .scene-caption{
+      position:absolute;
+      left:14px;
+      right:14px;
+      bottom:12px;
+      font-size:.9rem;
+      line-height:1.68;
+      color:#47474f;
+      font-weight:500;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(255,210,168,.4);
+      border-radius:10px;
+      padding:8px 10px;
+    }
+    .silo-grid{
+      position:absolute;
+      inset:66px 14px 66px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      align-items:end;
+    }
+    .stack{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      justify-content:flex-end;
+      position:relative;
+    }
+    .stack .box{
+      min-height:22px;
+      border-radius:7px;
+      background:rgba(255,252,249,.96);
+      border:1px solid rgba(239,166,125,.5);
+      color:#aa5a3b;
+      font-size:.72rem;
+      line-height:1.2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2px 4px;
+      font-weight:600;
+    }
+    .messy-line{
+      position:absolute;
+      height:3px;
+      transform-origin:left center;
+      background:linear-gradient(90deg,rgba(224,102,74,.7),rgba(224,102,74,0));
+      border-radius:3px;
+      opacity:.85;
+    }
+    .topic-core{
+      position:absolute;
+      left:50%;
+      top:52%;
+      width:94px;
+      height:94px;
+      margin-left:-47px;
+      margin-top:-47px;
+      border-radius:50%;
+      background:linear-gradient(145deg,rgba(117,225,162,.92),rgba(77,200,140,.88));
+      color:#0f5f35;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      box-shadow:0 10px 28px rgba(73,177,122,.26);
+    }
+    .radial-node{
+      position:absolute;
+      width:64px;height:64px;
+      border-radius:50%;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(111,207,149,.4);
+      box-shadow:0 8px 18px rgba(74,172,122,.16);
+      display:grid;
+      place-items:center;
+      color:#1f7a4b;
+      font-size:.82rem;
+      font-weight:600;
+      z-index:2;
+    }
+    .radial-line{
+      position:absolute;
+      left:50%;
+      top:52%;
+      height:2px;
+      transform-origin:left center;
+      background:linear-gradient(90deg,rgba(82,186,131,.75),rgba(82,186,131,0));
+      border-radius:3px;
+      z-index:1;
+    }
+    .arch-mid{
+      flex:0 0 92px;
+      display:grid;
+      place-items:center;
+      margin:0 6px;
+    }
+    .mid-icon{
+      width:48px;
+      height:48px;
+      border-radius:12px;
+      border:1px solid rgba(255,183,118,.4);
+      background:rgba(255,255,255,.6);
+      color:#9c5a10;
+      display:grid;
+      place-items:center;
+      box-shadow:0 10px 24px rgba(255,153,47,.16);
+    }
+    .mid-icon i{width:19px;height:19px}
+    /* P4 放松排版 */
+    .slide-p4{gap:28px}
+    .slide-p4 .subtitle{margin-top:-6px}
+    .slide-p4 .section-lead{padding:14px 16px}
+    .slide-p4 .arch-compare{margin-top:6px}
+
+    /* 垂直时间轴 */
+    .timeline{
+      position:relative;padding-left:24px;margin-top:8px
+    }
+    .timeline::before{
+      content:"";position:absolute;left:7px;top:0;bottom:0;width:3px;
+      background:linear-gradient(var(--brand),#ffd09a)
+    }
+    .node{
+      position:relative;padding:0 0 16px 16px
+    }
+    .node::before{
+      content:"";position:absolute;left:-24px;top:7px;width:14px;height:14px;border-radius:50%;
+      background:var(--brand);box-shadow:0 0 0 4px rgba(255,165,0,.18)
+    }
+    .node h4{font-size:1rem;color:#8f4b00;margin-bottom:4px}
+    .node p{color:#444;line-height:1.7}
+
+    .plan-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:6px;
+    }
+    .plan-card{
+      border:1px solid rgba(255,173,93,.3);
+      border-radius:14px;
+      background:rgba(255,255,255,.72);
+      padding:16px;
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+    .plan-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(255,153,47,.14);
+    }
+    .plan-card h4{font-size:1rem;color:#8f4b00;margin-bottom:6px}
+    .plan-card p{line-height:1.78;color:#3f3f3f}
+
+    .thanks-slide{
+      align-items:center;
+      text-align:center;
+    }
+    .thanks-wrap{
+      width:min(920px,94%);
+      margin:0 auto;
+      padding:64px 30px;
+      border-radius:22px;
+    }
+    .thanks-title{
+      max-width:none;
+      margin:0 auto;
+      font-size:clamp(2.6rem,6.8vw,5.2rem);
+      line-height:1.15;
+      letter-spacing:.08em;
+      color:#8f4b0f;
+      text-shadow:0 0 18px rgba(255,174,84,.25);
+    }
+    .thanks-subtitle{
+      margin:14px auto 0;
+      max-width:none;
+      font-size:clamp(1rem,1.65vw,1.2rem);
+      color:#6e6e73;
+      line-height:1.8;
+    }
+    .thanks-action{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .odyssey-slide{
+      position:relative;
+      overflow:hidden;
+      align-items:center;
+      text-align:left;
+    }
+    .odyssey-slide::before{
+      content:"";
+      position:absolute;
+      inset:-4% -8%;
+      background:
+        radial-gradient(circle at 10% 14%, rgba(255,199,122,.14), transparent 32%),
+        radial-gradient(circle at 90% 86%, rgba(255,188,106,.12), transparent 34%),
+        linear-gradient(160deg, rgba(255,250,242,.92), rgba(255,255,255,.96));
+      z-index:0;
+    }
+    .odyssey-particles{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+    }
+    .odyssey-particles span{
+      position:absolute;
+      width:4px;
+      height:4px;
+      border-radius:50%;
+      background:rgba(255,196,118,.68);
+      box-shadow:0 0 12px rgba(255,196,118,.38);
+      animation:twinkle 5.2s ease-in-out infinite;
+      opacity:.58;
+    }
+    .odyssey-particles span:nth-child(odd){width:3px;height:3px;opacity:.42}
+    @keyframes twinkle{
+      0%,100%{transform:translateY(0) scale(.8);opacity:.25}
+      50%{transform:translateY(-8px) scale(1);opacity:1}
+    }
+    .odyssey-wrap{
+      position:relative;
+      z-index:2;
+      width:min(980px,94%);
+      margin:0 auto;
+      border-radius:22px;
+      padding:42px 38px;
+      background:rgba(255,255,255,.5);
+      border:1px solid rgba(255,255,255,.78);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.84), 0 14px 34px rgba(255,160,68,.1);
+      backdrop-filter:blur(18px) saturate(122%);
+      -webkit-backdrop-filter:blur(18px) saturate(122%);
+    }
+    .odyssey-title{
+      color:#2b2b2f;
+      font-size:clamp(1.9rem,4.2vw,3.2rem);
+      font-weight:800;
+      letter-spacing:-.01em;
+      line-height:1.3;
+      margin-bottom:12px;
+    }
+    .odyssey-sub{
+      color:#7b7b80;
+      line-height:1.9;
+      margin-bottom:16px;
+    }
+    .poem{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+      margin-bottom:20px;
+    }
+    .fog-line{
+      color:#38383b;
+      font-size:clamp(1.02rem,1.55vw,1.18rem);
+      line-height:1.95;
+      opacity:0;
+      transform:translateY(20px) scale(.98);
+      filter:blur(7px);
+      transition:opacity .9s ease, transform .9s ease, filter .9s ease;
+      transition-delay:var(--d,0s);
+    }
+    .odyssey-slide.in-view .fog-line{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      filter:blur(0);
+    }
+    .fog-line.indent-1{padding-left:28px}
+    .fog-line.indent-2{padding-left:56px}
+    .fog-line.indent-3{padding-left:84px}
+    .script-line{
+      color:#bf6f14;
+      font-family:"Ma Shan Zheng","KaiTi","STKaiti",cursive;
+      font-size:clamp(1.35rem,2.6vw,2.15rem);
+      letter-spacing:.03em;
+      line-height:1.45;
+      margin-top:6px;
+      font-style:italic;
+      text-shadow:0 0 12px rgba(255,184,101,.34), 0 2px 12px rgba(255,190,120,.24);
+    }
+    .final-drop{
+      text-align:center;
+      font-size:clamp(1.45rem,2.9vw,2.3rem);
+      letter-spacing:.06em;
+      margin-top:6px;
+      padding-left:0 !important;
+    }
+    .odyssey-meta{
+      display:grid;
+      grid-template-columns:1.25fr .95fr;
+      gap:14px;
+      margin-top:6px;
+    }
+    .odyssey-card{
+      border-radius:14px;
+      background:rgba(255,255,255,.56);
+      border:1px solid rgba(255,255,255,.78);
+      padding:14px 14px 12px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.82), 0 10px 26px rgba(255,153,47,.1);
+    }
+    .odyssey-card h4{
+      color:#8a4e13;
+      font-size:.95rem;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+    .odyssey-card p{
+      color:#49494f;
+      line-height:1.8;
+    }
+    .keyword-cloud{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .keyword-chip{
+      padding:6px 10px;
+      border-radius:10px;
+      border:1px solid rgba(255,186,117,.46);
+      background:rgba(255,255,255,.64);
+      color:#8d4f14;
+      font-size:.86rem;
+      line-height:1.3;
+      box-shadow:0 7px 20px rgba(255,153,47,.12);
+    }
+    .odyssey-footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:18px;
+    }
+    .odyssey-note{
+      color:#6e6e73;
+      line-height:1.7;
+      max-width:32ch;
+      font-size:.95rem;
+    }
+    .thank-btn{
+      border:1px solid rgba(255,178,96,.54);
+      border-radius:12px;
+      padding:10px 16px;
+      background:linear-gradient(140deg, rgba(255,200,132,.34), rgba(255,255,255,.58));
+      color:#8a4a0f;
+      font-weight:700;
+      letter-spacing:.02em;
+      cursor:pointer;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .thank-btn:hover{
+      transform:translateY(-2px);
+      background:linear-gradient(140deg, rgba(255,187,112,.45), rgba(255,255,255,.72));
+      box-shadow:0 12px 26px rgba(255,170,86,.26);
+    }
+
+    @media (max-width:980px){
+      .slide{padding:8vh 6vw 11vh;min-height:680px;gap:20px}
+      .parallax-layer{gap:20px}
+      .grid-2,.grid-4,.plan-grid{grid-template-columns:1fr}
+      .side-nav{right:10px}
+      .slide-p4{gap:20px}
+      .arch-compare,.arch-comparison{
+        flex-direction:column;
+        align-items:stretch;
+        gap:24px;
+        margin:18px 0;
+      }
+      .arch-mid{
+        flex:0 0 auto;
+        margin:8px 0;
+      }
+      .arch-mid .mid-icon{
+        transform:rotate(90deg);
+      }
+      .arch-view,.arch-box{
+        min-height:268px;
+        max-width:none;
+        width:100%;
+      }
+      .odyssey-wrap{padding:26px 20px}
+      .fog-line.indent-1,.fog-line.indent-2,.fog-line.indent-3{padding-left:0}
+      .odyssey-meta{grid-template-columns:1fr}
+      .odyssey-footer{flex-direction:column;align-items:flex-start}
+      .thanks-wrap{padding:44px 20px}
+    }
+    @media (max-width:800px){
+      .arch-compare,.arch-comparison{
+        flex-direction:column;
+      }
+      .arch-mid{
+        margin:10px 0 12px;
+      }
+      .arch-mid .mid-icon{
+        transform:rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+
+  <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+
+  <div class="side-nav">
+    <button class="nav-btn" id="prevBtn" aria-label="上一页"><i data-lucide="chevron-left"></i></button>
+    <button class="nav-btn" id="nextBtn" aria-label="下一页"><i data-lucide="chevron-right"></i></button>
+  </div>
+
+  <div class="footer-indicator"><span id="pageNow">1</span> / <span id="pageTotal">6</span></div>
+
+  <main class="deck" id="deck">
+    <!-- P1 -->
+    <section class="slide">
+      <span class="badge"><i data-lucide="sparkles"></i>阶段性述职</span>
+      <h1 class="title">进化·新生</h1>
+      <p class="subtitle">从技术执行到业务赋能的跃迁</p>
+      <div class="glass card" style="max-width:760px">
+        <p><strong>汇报人：</strong>史晓昕</p>
+        <p><strong>部门：</strong>总经办 · 技术中心</p>
+        <p><strong>岗位职级：</strong>Java后端研发专员</p>
+        <p><strong>日期：</strong>2026年4月3日</p>
+      </div>
+    </section>
+
+    <!-- P2 -->
+    <section class="slide">
+      <h2 class="title" style="font-size:clamp(1.7rem,3vw,2.4rem)">业绩概览</h2>
+      <p class="subtitle">关键结果导向：数据准确、标准化建设、系统牵引与带教输出</p>
+      <div class="section-lead">
+        <p><strong>本页结论：</strong>试用期内完成了“业务流程稳定化 + 核心系统工程化 + AI 能力产品化”的三级跃迁，角色由执行走向可独立负责模块结果。</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="glass kpi">
+          <div class="num counter" data-target="95" data-suffix="%+">0</div>
+          <div class="lab">B 端数据准确率</div>
+        </div>
+        <div class="glass kpi">
+          <div class="num counter" data-target="100" data-suffix="%">0</div>
+          <div class="lab">ERP 标准化完成度</div>
+        </div>
+        <div class="glass kpi">
+          <div class="num counter" data-target="80" data-suffix="%+">0</div>
+          <div class="lab">课程运营需求满足率</div>
+        </div>
+        <div class="glass kpi">
+          <div class="num">Tutor 2.0</div>
+          <div class="lab">全链路主导建设</div>
+        </div>
+        <div class="glass kpi">
+          <div class="num counter" data-target="1" data-prefix="带教 " data-suffix=" 名">0</div>
+          <div class="lab">实习生培养落地</div>
+        </div>
+      </div>
+
+      <div class="glass card">
+        <ul>
+          <li>完成 B 端销售/成单/合作模式重构，核心数据口径统一，质量稳定提升。</li>
+          <li>课程运营轮岗期间，下沉收集班主任模块需求，完成移动端操作、排课优化、订单筛选提醒等能力迭代。</li>
+          <li>从 0 到 1 搭建 ERP 导师生态底座，沉淀学校/专业/科目标准库。</li>
+          <li>主导 Tutor 2.0 关键架构与交互能力升级，支撑复杂会话场景。</li>
+          <li>承担初级管理职责，带领实习生落地 CRM 线索生命周期流转模块，完成任务拆解、评审与交付跟进。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- P3 -->
+    <section class="slide">
+      <h2 class="title" style="font-size:clamp(1.7rem,3vw,2.4rem)">关键动作</h2>
+      <p class="subtitle">案例一：ERP 基础设施建设 —— 数字化底座的标准化实践</p>
+      <div class="section-lead">
+        <p><strong>业务背景与痛点（The Challenge）：</strong>导师管理长期处于“无系统、无标准、无沉淀”状态，生命周期（招募-入库-签约）无法串联；底层数据散乱导致 AI 特征质量不足，严重制约匹配效率与业务规模。</p>
+      </div>
+      <div class="grid-2">
+        <div class="glass card">
+          <h3>关键动作（Key Actions）</h3>
+          <ul>
+            <li><strong>顶层设计与底座构建：</strong>设计并上线统一教育背景库（学校/专业/科目）与文件管理中心，统一数据口径。</li>
+            <li>构建导师全生命周期状态机，打通从“候选”到“签约”的流程壁垒。</li>
+            <li><strong>AI 赋能自动化：</strong>在招募关键节点集成 AI 回调分析系统，自动提取、校验导师简历信息。</li>
+            <li>实现服务间文件流预签名与自动化上传，消除人工搬运数据损耗。</li>
+          </ul>
+        </div>
+        <div class="glass card">
+          <h3>产出结果（Business Impact）</h3>
+          <ul>
+            <li><strong>效率革命：</strong>实现导师入库“零延迟”体验，大幅缩减人工录入与审核时长。</li>
+            <li><strong>合规与资产化：</strong>完成导师资源资产化沉淀，建立公司核心人才数据护城河。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- P4 -->
+    <section class="slide">
+      <h2 class="title" style="font-size:clamp(1.7rem,3vw,2.4rem)">关键动作</h2>
+      <p class="subtitle">案例二：Tutor 2.0 架构升级 —— 性能与交互的平衡</p>
+      <div class="grid-2">
+        <div class="glass card">
+          <h3>背景</h3>
+          <p>公司向 AI 驱动转型，需要承载更复杂的多场景对话体验，对系统性能、上下文连续性和交互稳定性提出更高要求。</p>
+          <h3 style="margin-top:12px">关键动作</h3>
+          <ul>
+            <li><strong>深度交互攻克：</strong>解决“按顶级知识点会话”及“上下文历史清除”等核心逻辑。</li>
+            <li><strong>数据模型重构：</strong>通过 Topic 关联机制优化数据表结构，提升大数据量下画布响应速度。</li>
+          </ul>
+        </div>
+        <div class="glass card">
+          <h3>结果</h3>
+          <p>推动产品从“工具型”向“智能型”进化，实现跨画布话题打通，为后续多场景连续会话奠定架构基础。</p>
+          <div class="section-lead" style="margin-top:12px">
+            <p><strong>一句话价值：</strong>以 Topic 关联机制平衡性能与体验，让 Tutor 能够稳定支撑复杂对话场景。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P5 -->
+    <section class="slide">
+      <h2 class="title" style="font-size:clamp(1.7rem,3vw,2.4rem)">问题反思与复盘</h2>
+      <div class="glass card">
+        <h3>坑位回放：Tutor 项目初期数据架构的局限性</h3>
+        <ul>
+          <li><strong>问题：</strong>初期只考虑了单画布的多文件扩展，将对话联系耦合在画布实体上。</li>
+          <li><strong>影响：</strong>随着对话增长，画布加载逻辑过重，严重影响性能，且无法支持跨画布的上下文延续。</li>
+        </ul>
+      </div>
+      <div class="glass card">
+        <h3>深度思考：从“单实体”转向“逻辑话题域”</h3>
+        <ul>
+          <li>意识到架构必须超前于业务，将“展示层（画布）”与“逻辑层（对话话题）”解耦是高性能系统的必然要求。</li>
+        </ul>
+      </div>
+      <div class="glass card">
+        <h3>优化动作：引入 Topic（话题）中立层</h3>
+        <ul>
+          <li>将多个画布关联为一个 Topic，对话由 Topic 统一调度。此举彻底释放了画布性能压力，并实现了话题逻辑的无缝打通。</li>
+          <li>同时在带教中引入更细致的任务拆解与 Code Review，规避理解偏差带来的技术债。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- P6 -->
+    <section class="slide">
+      <h2 class="title" style="font-size:clamp(1.7rem,3vw,2.4rem)">岗位自评</h2>
+      <div class="section-lead">
+        <p><strong>自评定位：</strong>当前已具备“独立负责模块结果”的能力，下一阶段重点强化系统级架构判断与跨团队协同牵引能力。</p>
+      </div>
+      <div class="grid-2">
+        <div class="glass card">
+          <h3>技术实现</h3>
+          <p>能够参与实现ERP、CRM 等复杂模块设计，并在项目中应用策略模式提升代码可扩展性。</p>
+        </div>
+        <div class="glass card">
+          <h3>业务理解</h3>
+          <p>持续下沉一线，围绕“需求目标-流程阻塞-指标结果”闭环推动方案，能够将业务语言翻译为可落地的系统设计。</p>
+        </div>
+        <div class="glass card">
+          <h3>团队协作</h3>
+          <p>跨业务、产品、研发高频协同，建立需求澄清和反馈机制，确保需求解释一致与交付质量一致。</p>
+        </div>
+        <div class="glass card">
+          <h3>管理潜力</h3>
+          <p>初步具备带教能力，但在复杂任务的优先级管理与长期风险预判上仍有进步空间。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- P7 -->
+    <section class="slide">
+      <h2 class="title" style="font-size:clamp(1.7rem,3vw,2.4rem)">后期规划</h2>
+      <div class="glass card">
+        <div class="section-lead">
+          <p><strong>规划主线：</strong>以“中台问题解决智能化 + CRM 转化自动化 + Tutor 交互多模态化”三条主线推进，目标是将个人产出升级为团队可复用能力。</p>
+          <div class="tag-row">
+            <span class="tag">业务价值优先</span>
+            <span class="tag">系统能力沉淀</span>
+            <span class="tag">跨部门协同推进</span>
+          </div>
+        </div>
+        <div class="plan-grid">
+          <div class="plan-card">
+            <h4>目标一：小龙虾项目落地</h4>
+            <p>与 AI 部门深度协同，解决中台业务问题解决痛点，形成可复用的问答执行中枢。</p>
+          </div>
+          <div class="plan-card">
+            <h4>目标二：CRM 深度闭环</h4>
+            <p>优化线索去重与自动分配算法，完善线索全生命周期自动化流转，提升转化效率与运营确定性。</p>
+          </div>
+          <div class="plan-card">
+            <h4>目标三：Tutor 2.x 交互革命</h4>
+            <p>集成前置 Agent，支持全页面/多文档批量指令，落地“录音转写到结构化产出”的多模态闭环。</p>
+          </div>
+          <div class="plan-card">
+            <h4>支持诉求：能力升级</h4>
+            <p>希望获得复杂系统设计的架构指导，并参与跨部门业务梳理，从宏观视角强化闭环理解与规划能力。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- P8 -->
+    <section class="slide thanks-slide">
+      <div class="glass thanks-wrap">
+        <div class="thanks-icon"><i data-lucide="party-popper"></i></div>
+        <h2 class="thanks-title">感谢聆听</h2>
+        <p class="thanks-subtitle">期待与大家一起继续把业务价值、系统能力和团队协作做深做透。</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script>
+    (function () {
+      const deck = document.getElementById("deck");
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const progress = document.getElementById("progress");
+      const now = document.getElementById("pageNow");
+      const total = document.getElementById("pageTotal");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      total.textContent = slides.length;
+
+      let current = 0;
+      const counterPlayed = new WeakSet();
+      let finalConfettiPlayed = false;
+
+      function enableParallaxLayers() {
+        slides.forEach((slide) => {
+          const layer = document.createElement("div");
+          layer.className = "parallax-layer";
+          while (slide.firstChild) {
+            layer.appendChild(slide.firstChild);
+          }
+          slide.appendChild(layer);
+        });
+      }
+
+      function observeSlides() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                const layer = entry.target.querySelector(".parallax-layer");
+                if (layer) {
+                  layer.classList.add("animate__animated", "animate__fadeInUp");
+                }
+              } else {
+                entry.target.classList.remove("in-view");
+              }
+            });
+          },
+          {
+            root: deck,
+            threshold: 0.35,
+          }
+        );
+        slides.forEach((slide) => observer.observe(slide));
+      }
+
+      function getCurrentIndex() {
+        const h = deck.clientHeight;
+        return Math.max(0, Math.min(slides.length - 1, Math.round(deck.scrollTop / h)));
+      }
+
+      function goTo(index) {
+        const i = Math.max(0, Math.min(slides.length - 1, index));
+        slides[i].scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function updateUI() {
+        current = getCurrentIndex();
+        now.textContent = current + 1;
+        const pct = ((current + 1) / slides.length) * 100;
+        progress.style.width = pct + "%";
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === slides.length - 1;
+        playCountersInSlide(slides[current]);
+        maybeAutoFinaleConfetti();
+      }
+
+      function fireFinaleConfetti() {
+        if (typeof confetti !== "function") return;
+        const base = {
+          spread: 70,
+          startVelocity: 34,
+          ticks: 110,
+          gravity: 0.95,
+          scalar: 0.92,
+          colors: ["#f8d086", "#ffd18f", "#f4b860", "#fff4dc", "#ffb45a"],
+        };
+        confetti({ ...base, particleCount: 88, origin: { x: 0.2, y: 0.2 } });
+        confetti({ ...base, particleCount: 88, origin: { x: 0.8, y: 0.2 } });
+        setTimeout(() => {
+          confetti({ ...base, particleCount: 116, origin: { x: 0.5, y: 0.15 } });
+        }, 240);
+      }
+
+      function maybeAutoFinaleConfetti() {
+        if (current !== slides.length - 1 || finalConfettiPlayed) return;
+        finalConfettiPlayed = true;
+        fireFinaleConfetti();
+      }
+
+      function initArchSwitch() {
+        const switchWrap = document.getElementById("archSwitch");
+        if (!switchWrap) return;
+        const btns = Array.from(switchWrap.querySelectorAll(".switch-btn"));
+        const scenes = {
+          silo: document.querySelector('[data-scene="silo"]'),
+          topic: document.querySelector('[data-scene="topic"]'),
+        };
+        function setView(view) {
+          btns.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.view === view));
+          Object.keys(scenes).forEach((key) => {
+            const el = scenes[key];
+            if (!el) return;
+            el.classList.toggle("visible", key === view);
+            el.classList.toggle("hidden", key !== view);
+          });
+        }
+        btns.forEach((btn) => {
+          btn.addEventListener("click", () => setView(btn.dataset.view));
+        });
+      }
+
+      function bindThankYouConfetti() {
+        const btn = document.getElementById("thankYouBtn");
+        if (!btn || typeof confetti !== "function") return;
+        btn.addEventListener("click", () => {
+          const rect = btn.getBoundingClientRect();
+          const x = (rect.left + rect.width / 2) / window.innerWidth;
+          const y = (rect.top + rect.height / 2) / window.innerHeight;
+          confetti({
+            particleCount: 56,
+            spread: 52,
+            startVelocity: 22,
+            gravity: 1.05,
+            ticks: 90,
+            scalar: 0.86,
+            origin: { x, y },
+            colors: ["#f8d086", "#ffd18f", "#f4b860", "#fff4dc"],
+          });
+        });
+      }
+
+      function animateCounter(el) {
+        if (counterPlayed.has(el)) return;
+        counterPlayed.add(el);
+
+        const target = Number(el.dataset.target || 0);
+        const prefix = el.dataset.prefix || "";
+        const suffix = el.dataset.suffix || "";
+        const dur = 1200;
+        const start = performance.now();
+
+        function frame(t) {
+          const p = Math.min(1, (t - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = Math.round(target * eased);
+          el.textContent = prefix + val + suffix;
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function playCountersInSlide(slideEl) {
+        slideEl.querySelectorAll(".counter").forEach(animateCounter);
+      }
+
+      // 滚动监听
+      let ticking = false;
+      deck.addEventListener("scroll", () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateUI();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // 键盘翻页
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") goTo(current + 1);
+        if (e.key === "ArrowLeft") goTo(current - 1);
+      });
+
+      // 侧边按钮
+      prevBtn.addEventListener("click", () => goTo(current - 1));
+      nextBtn.addEventListener("click", () => goTo(current + 1));
+
+      // 初始化
+      enableParallaxLayers();
+      observeSlides();
+      initArchSwitch();
+      bindThankYouConfetti();
+      if (window.lucide) window.lucide.createIcons();
+      updateUI();
+    })();
+  </script>
+</body>
+</html>
